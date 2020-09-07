@@ -6,22 +6,20 @@ import api from '../../services/api';
 const MainPage = () => {
   const searchInputRef = useRef(null);
   const [books, setBooks] = useState([]);
-  console.log('changed state', books);
 
-  //useEffect(() => { console.log(books)}, [books])
-
-  function searchBooks() {
-    api.get('/api/v1/search_book', {
+  async function searchBooks() {
+    const response = await api.get('/api/v1/search_book', {
       params: {
         title: searchInputRef.current.value
       }
-    }).then(response => {
-      searchInputRef.current.value = '';
-      console.log(response.data);
-      setBooks(response.data);
-      console.log(books);
     });
+   
+    searchInputRef.current.value = '';
+    await setBooks(response.data);
   }
+
+  console.log(books);
+
   return (
     <Fragment>
       <Header myRef={searchInputRef} searchBooks={searchBooks} />

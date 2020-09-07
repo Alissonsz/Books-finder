@@ -1,12 +1,15 @@
 import React from 'react';
+import Book from '../Book';
+import { 
+  Container
+} from './styles';
 
 const Body = ({books} = props) => {
+  console.log(books);
   return(
-    <div>
-      {books.map(book => <div key={book.download_page_link}>
-        <p>{book.title}</p>
-      </div>)}
-    </div>
+    <Container>
+      {books.map(book => <Book book={book}/>)}
+    </Container>
   )
 }
 
