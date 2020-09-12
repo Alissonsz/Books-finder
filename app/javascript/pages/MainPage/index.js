@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react';
-import Header from '../Header';
-import Body from '../Body';
+import React, { useRef, useState, Fragment } from 'react';
+import Header from '../../components/Header';
+import Body from '../../components/Body';
 import api from '../../services/api';
 
 const MainPage = () => {

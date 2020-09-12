@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MainPage from '../pages/MainPage';
 import Games from './Games';
 import GlobalStyles from '../styles/GlobalStyles';
-import api from '../services/api';
 
 const App = () => {
   return (

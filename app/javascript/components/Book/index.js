@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import NoCoverImage from '../../../assets/images/no_cover.jpg';
 import { 
   Container
 } from './styles';
 
 const Book = ({book} = props) => {
+  const imageRef = useRef(null);
+
+  function coverNotFound () {
+    imageRef.current.src = NoCoverImage;
+  }
+
   return(
     <Container>
       <div className="book-image">
-        <img src="https://images-submarino.b2w.io/produtos/imagens/1517027661/1517027695_1GG.jpg"/>
+        <img src={book.cover_id} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
       </div>
       <div className="book-infos">
         <span><strong>Title: </strong>{book.title}</span>
