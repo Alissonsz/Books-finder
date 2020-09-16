@@ -25,14 +25,16 @@ class Scrapper
         book_url = 'http://libgen.rs' +  book_infos[:download_page_link]
         unparsed_book_page = HTTParty.get(book_url)
         parsed_book_page = Nokogiri::HTML(unparsed_book_page)
-        id = parsed_book_page.css("table")[1].at(':contains("ID")').css("td")[1].text.strip
+        id = parsed_book_page.css("table")[1]?.at(':contains("ID")')?.css("td")[1].text.strip
+        md5 = book_infos[:download_page_link][9...]
         book_infos[:libgen_id] = id
 
         first_id = ''
         first_id = id[0..2] if id.length == 6
         first_id = id[0..3] if id.length == 7
 
-        book_infos[:cover_id] = 'http://gen.lib.rus.ec/fictioncovers/' + first_id + '000' + book_infos[:download_page_link][8...].downcase + '.jpg'
+        book_infos[:cover_url] = 'http://gen.lib.rus.ec/fictioncovers/' + first_id + '000/' + md5.downcase + '.jpg'
+        book_infos[:md5] = md5
         scraped_pages_count += 1
       end
 
