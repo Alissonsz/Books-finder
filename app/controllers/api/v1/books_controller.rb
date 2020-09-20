@@ -5,7 +5,7 @@ module Api
     class BooksController < ApplicationController
       def search
         book_title = params[:title]
-        response = Scrapper.scrap(book_title)
+        response = Scrapper.getBooks(book_title)
         render json: response
       end
     end
