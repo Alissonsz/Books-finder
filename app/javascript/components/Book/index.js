@@ -16,10 +16,10 @@ const Book = ({book} = props) => {
   return(
     <Container>
       <div className="book-image">
-        {book.cover_url != undefined ?
-          <img src={book.cover_url} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
+        {book.cover_id != undefined ?
+          <img src={book.cover_id} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
           :
-          <img src={coverNotFound} />
+          <img src={NoCoverImage} />
         }
       </div>
       <div className="book-infos">
