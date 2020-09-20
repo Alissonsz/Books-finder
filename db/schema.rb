@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_222927) do
+ActiveRecord::Schema.define(version: 2020_09_20_172508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2020_09_01_222927) do
     t.string "download_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cover_url"
+    t.integer "libgen_id"
+    t.string "lenguage"
+    t.string "serie"
+    t.string "file_infos"
+    t.string "libgen_page_url"
+  end
+
+  create_table "books_queries", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "query_id"
+    t.index ["book_id"], name: "index_books_queries_on_book_id"
+    t.index ["query_id"], name: "index_books_queries_on_query_id"
+  end
+
+  create_table "queries", force: :cascade do |t|
+    t.string "query_name"
   end
 
 end
