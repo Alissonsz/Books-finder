@@ -6,8 +6,10 @@ import api from '../../services/api';
 const MainPage = () => {
   const searchInputRef = useRef(null);
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function searchBooks() {
+    setIsLoading(true);
     const response = await api.get('/api/v1/search_book', {
       params: {
         title: searchInputRef.current.value
@@ -15,6 +17,7 @@ const MainPage = () => {
     });
    
     searchInputRef.current.value = '';
+    setIsLoading(false);
     await setBooks(response.data);
   }
 
@@ -23,7 +26,7 @@ const MainPage = () => {
   return (
     <Fragment>
       <Header myRef={searchInputRef} searchBooks={searchBooks} />
-      <Body books={books}/>
+      <Body isLoading={isLoading} books={books}/>
     </Fragment>
   )
 }

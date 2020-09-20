@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import NoCoverImage from '../../../assets/images/no_cover.jpg';
 import { 
-  Container
+  Container,
+  DownloadIcon,
+  DownloadIconContainer
 } from './styles';
 
 const Book = ({book} = props) => {
@@ -14,7 +16,11 @@ const Book = ({book} = props) => {
   return(
     <Container>
       <div className="book-image">
-        <img src={book.cover_id} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
+        {book.cover_url != undefined ?
+          <img src={book.cover_url} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
+          :
+          <img src={coverNotFound} />
+        }
       </div>
       <div className="book-infos">
         <span><strong>Title: </strong>{book.title}</span>
@@ -23,6 +29,9 @@ const Book = ({book} = props) => {
         <span><strong>Author: </strong>{book.author}</span>
         <span><strong>File: </strong>{book.file_infos}</span>
       </div>
+      <DownloadIconContainer>
+        <DownloadIcon />
+      </DownloadIconContainer>
     </Container>
   );
 }
