@@ -8,6 +8,7 @@ export const Container = styled.div`
   padding-left: 1rem;
   margin-bottom: 1rem;
   background-color: #F5F5F5;
+  position: relative;
 `
 
 export const BookIcon = styled(FaBook)`
@@ -47,5 +48,12 @@ export const SearchIcon = styled(AiOutlineSearch)`
   width: 20px;
   height: 20px;
   margin-right: 5px;
+  cursor: pointer;
+`
+
+export const SessionInfos = styled.div`
+  justify-self: flex-end;
+  position: absolute;
+  right: 1.5rem;
   cursor: pointer;
 `

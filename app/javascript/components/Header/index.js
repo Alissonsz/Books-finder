@@ -6,7 +6,8 @@ import {
   SiteName,
   SearchInput,
   SearchIcon,
-  SearchContainer
+  SearchContainer,
+  SessionInfos
 } from './styles';
 
 const Header = ({myRef, searchBooks} = props) => {
@@ -26,6 +27,11 @@ const Header = ({myRef, searchBooks} = props) => {
         <SearchInput ref={myRef} placeholder="Enter the book title" onKeyDown={handleKeyDown}></SearchInput>
         <SearchIcon onClick={searchBooks}/>
       </SearchContainer>
+      <Link to="/login">
+        <SessionInfos>
+          Oi mano kk
+        </SessionInfos>
+      </Link>
     </Container>
   )
 }
