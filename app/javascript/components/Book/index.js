@@ -19,7 +19,7 @@ const Book = ({book} = props) => {
         {book.cover_url != undefined ?
           <img src={book.cover_url} ref={imageRef} referrerPolicy="no-referrer" onError={coverNotFound}/>
           :
-          <img src={coverNotFound} />
+          <img src={NoCoverImage} />
         }
       </div>
       <div className="book-infos">
